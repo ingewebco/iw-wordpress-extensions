@@ -1,28 +1,29 @@
-# IW WhatsApp Button 1.1.0
+# IW WhatsApp Button 1.2.0
 
-Botón flotante para cualquier sitio WordPress. No requiere WooCommerce, jQuery ni un CDN.
+Un solo plugin con dos botones y configuración en **Ajustes → WhatsApp Button**.
 
-## Instalación y configuración
+- **Flotante:** aparece en todo WordPress, abajo a la derecha, con ícono blanco de Font Awesome y fondo circular verde WhatsApp. Funciona sin WooCommerce y usa el mensaje inicial configurable.
+- **Comprar por WhatsApp:** aparece junto a Añadir al carrito en el formulario de producto de WooCommerce. Envía nombre, precio mostrado, cantidad, atributos seleccionados y enlace del producto. Actualiza el precio al seleccionar una variación y lo restablece al limpiar la selección.
 
-1. Sube `dist/wc-whatsapp-button-v1.1.0.zip` desde Plugins → Añadir plugin → Subir plugin.
-2. Si ya tienes la versión anterior, acepta reemplazarla. La carpeta y archivo principal se mantienen para actualizar el mismo plugin.
-3. Activa el plugin y abre Ajustes → WhatsApp Button.
-4. Indica el teléfono con código de país (por ejemplo, `573001234567`) y el mensaje inicial.
+Ambos botones usan el mismo teléfono con código de país. El número de versiones anteriores se conserva; dejarlo vacío oculta ambos botones. El mensaje configurable se aplica al flotante; el de compra se construye a partir del producto.
 
-El botón aparece en todo el sitio, abajo a la derecha, con fondo circular verde `#25D366` e ícono blanco de WhatsApp de Font Awesome Free, incluido localmente como SVG. El tema debe ejecutar el hook estándar `wp_footer()`. Un teléfono vacío oculta el botón.
+## Instalación
 
-## Cambios 1.1.0
+Sube `wc-whatsapp-button-v1.2.0.zip` desde Plugins → Añadir plugin → Subir plugin y acepta reemplazar la versión anterior. Mantiene la carpeta y archivo principal originales. Activa el plugin y configura el número en Ajustes → WhatsApp Button.
 
-- Se elimina la dependencia y la ubicación exclusiva de WooCommerce.
-- Se reemplaza el botón de compra por un acceso de contacto general en todo el sitio.
-- La configuración pasa a Ajustes y conserva el teléfono anterior (`wc_whatsapp_phone`).
-- Se añade mensaje inicial configurable y codificación correcta del enlace.
-- Botón de 60 px, enfoque visible de teclado y respeto de áreas seguras móviles.
-- No extrae precios, cantidades ni variaciones de productos.
+## Requisitos y alcance
 
-## Requisitos
+WordPress 5.8+, PHP 7.4+. WooCommerce es opcional. El tema debe ejecutar `wp_footer()` para el flotante y el hook `woocommerce_after_add_to_cart_button` en el formulario de compra para el botón de producto. Los constructores que sustituyen ese formulario deben conservar dicho hook.
 
-WordPress 5.8 o posterior y PHP 7.4 o posterior. Sintaxis validada para PHP 7.4 y paquete ZIP verificado. Pendiente prueba funcional en una instalación WordPress real.
+El enlace de producto funciona sin JavaScript con datos básicos y cantidad 1; JavaScript actualiza cantidad y variaciones al hacer clic. La integración usa el jQuery de WordPress y el HTML de precios que proporciona WooCommerce. No añade productos al carrito ni procesa pedidos o pagos.
+
+## Validación
+
+Sintaxis PHP 7.4 y JavaScript verificadas. Pruebas de DOM aisladas: precio base, precio de variación, reinicio de selección, cantidad, atributos y codificación de mensajes/enlaces. ZIP verificado. Pendiente validación en una instalación WordPress/WooCommerce real.
+
+## Cambios 1.2.0
+
+Se recuperan las funciones de compra de la versión original y se mantienen el flotante general y los ajustes independientes de WooCommerce de 1.1.0. Las llamadas a WooCommerce se comprueban antes de usarlas.
 
 ## Ícono
 

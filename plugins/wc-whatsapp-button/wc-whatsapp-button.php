@@ -1,8 +1,8 @@
 <?php
 /**
  * Plugin Name: IW WhatsApp Button
- * Description: Botón flotante de WhatsApp para todo WordPress, sin depender de WooCommerce.
- * Version: 1.1.0
+ * Description: WhatsApp flotante para WordPress y botón de compra con integración opcional de WooCommerce.
+ * Version: 1.2.0
  * Requires at least: 5.8
  * Requires PHP: 7.4
  * Author: IngeWeb
@@ -19,6 +19,7 @@ class WC_WhatsApp_Button_Pro {
     public function __construct() {
         add_action('wp_enqueue_scripts', [$this, 'enqueue_styles']);
         add_action('wp_footer', [$this, 'render_button']);
+        add_action('woocommerce_after_add_to_cart_button', [$this, 'render_product_button']);
         add_action('admin_menu', [$this, 'add_admin_menu']);
         add_action('admin_init', [$this, 'register_settings']);
     }
@@ -31,7 +32,10 @@ class WC_WhatsApp_Button_Pro {
         if (!$this->sanitize_phone(get_option($this->option_name, ''))) {
             return;
         }
-        wp_enqueue_style('iw-whatsapp-button', plugin_dir_url(__FILE__) . 'assets/button.css', [], '1.1.0');
+        wp_enqueue_style('iw-whatsapp-button', plugin_dir_url(__FILE__) . 'assets/button.css', [], '1.2.0');
+        if (function_exists('is_product') && is_product()) {
+            wp_enqueue_script('iw-whatsapp-product', plugin_dir_url(__FILE__) . 'assets/product.js', ['jquery'], '1.2.0', true);
+        }
     }
 
     public function render_button() {
@@ -44,6 +48,30 @@ class WC_WhatsApp_Button_Pro {
         ?>
         <a class="iw-whatsapp-button" href="<?php echo esc_url($url); ?>" target="_blank" rel="noopener noreferrer" aria-label="Contactar por WhatsApp (abre en una nueva pestaña)" title="Contactar por WhatsApp">
             <img src="<?php echo esc_url(plugin_dir_url(__FILE__) . 'assets/whatsapp.svg'); ?>" width="32" height="32" alt="" aria-hidden="true">
+        </a>
+        <?php
+    }
+
+    public function render_product_button() {
+        global $product;
+        if (!class_exists('WC_Product') || !($product instanceof WC_Product)) {
+            return;
+        }
+        $phone = $this->sanitize_phone(get_option($this->option_name, ''));
+        if (!$phone) {
+            return;
+        }
+        $name = wp_strip_all_tags($product->get_name());
+        $url = get_permalink($product->get_id());
+        $price = html_entity_decode(wp_strip_all_tags($product->get_price_html()), ENT_QUOTES, get_bloginfo('charset'));
+        $message = "Hola, estoy interesado en este producto:\n\nProducto: " . $name . "\nPrecio: " . $price . "\nCantidad: 1\n\n" . $url;
+        ?>
+        <a class="button wc-whatsapp-button iw-whatsapp-product" href="<?php echo esc_url('https://wa.me/' . $phone . '?text=' . rawurlencode($message)); ?>" target="_blank" rel="noopener noreferrer"
+           data-phone="<?php echo esc_attr($phone); ?>"
+           data-product-url="<?php echo esc_url($url); ?>"
+           data-product-name="<?php echo esc_attr($name); ?>"
+           data-product-price="<?php echo esc_attr($price); ?>">
+            Comprar por WhatsApp
         </a>
         <?php
     }
@@ -72,7 +100,7 @@ class WC_WhatsApp_Button_Pro {
         ?>
         <div class="wrap">
             <h1>IW WhatsApp Button</h1>
-            <p>Botón flotante en la esquina inferior derecha de todo el sitio. No requiere WooCommerce.</p>
+            <p>Botón flotante en todo el sitio y botón de compra en los productos si WooCommerce está activo. Ambos usan el mismo número. El flotante no requiere WooCommerce.</p>
             <form method="post" action="options.php">
                 <?php settings_fields('wc_whatsapp_settings_group'); ?>
                 <table class="form-table" role="presentation">
@@ -80,11 +108,11 @@ class WC_WhatsApp_Button_Pro {
                         <th scope="row"><label for="iw-whatsapp-phone">Número de WhatsApp</label></th>
                         <td>
                             <input id="iw-whatsapp-phone" type="text" inputmode="tel" class="regular-text" name="<?php echo esc_attr($this->option_name); ?>" value="<?php echo esc_attr(get_option($this->option_name, '')); ?>" placeholder="573001234567">
-                            <p class="description">Incluye el código de país. Se guardan únicamente los dígitos. Deja vacío para ocultar el botón.</p>
+                            <p class="description">Incluye el código de país. Se guardan únicamente los dígitos. Deja vacío para ocultar ambos botones.</p>
                         </td>
                     </tr>
                     <tr>
-                        <th scope="row"><label for="iw-whatsapp-message">Mensaje inicial</label></th>
+                        <th scope="row"><label for="iw-whatsapp-message">Mensaje del botón flotante</label></th>
                         <td><textarea id="iw-whatsapp-message" name="iw_whatsapp_message" rows="4" class="large-text"><?php echo esc_textarea(get_option('iw_whatsapp_message', 'Hola, me gustaría recibir más información.')); ?></textarea></td>
                     </tr>
                 </table>

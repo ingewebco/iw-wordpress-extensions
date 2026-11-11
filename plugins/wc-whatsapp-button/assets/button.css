@@ -41,3 +41,22 @@ a.iw-whatsapp-button > img {
     box-shadow: none;
     filter: brightness(0) invert(1);
 }
+
+/* Botón de compra independiente del botón flotante. */
+a.iw-whatsapp-product {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    margin: 8px;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+}
+a.iw-whatsapp-product:hover {
+    background: #128c7e;
+    color: #fff;
+}
+a.iw-whatsapp-product:focus-visible {
+    outline: 3px solid #075e54;
+    outline-offset: 3px;
+}

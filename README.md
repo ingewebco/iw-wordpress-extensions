@@ -8,7 +8,7 @@ Colección de extensiones de IngeWeb para WordPress. Cada plugin se organiza baj
 | --- | --- | --- | --- |
 | [IW Search Results](plugins/iw-search-results) | Resultados de búsqueda global, catálogo visual, búsqueda exclusiva de productos WooCommerce y búsqueda exclusiva de posts, con filtros por categorías, exclusiones por ID e integración opcional de características de IW Product Features. | 1.4.2 | En uso y evolución |
 | [Indicadores Económicos de Colombia](plugins/indicadores-economicos-colombia) | Muestra TRM, inflación mensual, tasa de intervención y UVR mediante `[indicadores_colombia]`. | 1.0.1 | Requiere revisión y pruebas |
-| [IW WhatsApp Button](plugins/wc-whatsapp-button) | Botón flotante de WhatsApp para todo WordPress, con ícono local de Font Awesome y mensaje configurable. | 1.1.0 | Sintaxis y ZIP verificados; pendiente validación en sitio |
+| [IW WhatsApp Button](plugins/wc-whatsapp-button) | Botón flotante para WordPress y compra por WhatsApp con precio, cantidad y variaciones en WooCommerce opcional. | 1.2.0 | Sintaxis y ZIP verificados; pendiente validación en sitio |
 
 ## Paquetes
 
@@ -16,6 +16,7 @@ Colección de extensiones de IngeWeb para WordPress. Cada plugin se organiza baj
 - [IW Search Results 1.3.0](dist/iw-search-results-v1.3.0.zip)
 - [IW Search Results 1.2.1](dist/iw-search-results-v1.2.1.zip)
 - [Indicadores Económicos de Colombia 1.0.1](dist/indicadores-economicos-colombia-v1.0.1.zip)
+- [IW WhatsApp Button 1.2.0](dist/wc-whatsapp-button-v1.2.0.zip)
 - [IW WhatsApp Button 1.1.0](dist/wc-whatsapp-button-v1.1.0.zip)
 - [IW WhatsApp Button (última versión)](dist/wc-whatsapp-button.zip)
 
