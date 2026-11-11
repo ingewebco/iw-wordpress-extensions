@@ -1,38 +1,29 @@
-# WooCommerce WhatsApp Button Pro
+# IW WhatsApp Button 1.1.0
 
-## Estado
+Botón flotante para cualquier sitio WordPress. No requiere WooCommerce, jQuery ni un CDN.
 
-Plugin WordPress versión 1.0. Esta documentación describe el archivo recibido. Requiere revisión técnica y pruebas en un sitio de pruebas antes de utilizarse o distribuirse.
+## Instalación y configuración
 
-## Identificación
+1. Sube `dist/wc-whatsapp-button-v1.1.0.zip` desde Plugins → Añadir plugin → Subir plugin.
+2. Si ya tienes la versión anterior, acepta reemplazarla. La carpeta y archivo principal se mantienen para actualizar el mismo plugin.
+3. Activa el plugin y abre Ajustes → WhatsApp Button.
+4. Indica el teléfono con código de país (por ejemplo, `573001234567`) y el mensaje inicial.
 
-- Nombre declarado: WooCommerce WhatsApp Button Pro.
-- Versión declarada: `1.0`.
-- Autor declarado: IngeWeb.
-- Archivo principal: `wc-whatsapp-button.php`.
-- Código fuente: esta carpeta.
-- ZIP recibido: [`dist/wc-whatsapp-button.zip`](../../dist/wc-whatsapp-button.zip).
-- El ZIP contiene un único archivo PHP en la raíz, sin carpeta del plugin ni documentación adicional.
+El botón aparece en todo el sitio, abajo a la derecha, con fondo circular verde `#25D366` e ícono blanco de WhatsApp de Font Awesome Free, incluido localmente como SVG. El tema debe ejecutar el hook estándar `wp_footer()`. Un teléfono vacío oculta el botón.
 
-## Función observada
+## Cambios 1.1.0
 
-Agrega un botón **Comprar por WhatsApp** después del botón de añadir al carrito en páginas de producto. El administrador configura un número con código de país desde un submenú de WooCommerce. Al pulsar el botón, un script intenta abrir `wa.me` con nombre, precio, variaciones, cantidad y enlace del producto.
+- Se elimina la dependencia y la ubicación exclusiva de WooCommerce.
+- Se reemplaza el botón de compra por un acceso de contacto general en todo el sitio.
+- La configuración pasa a Ajustes y conserva el teléfono anterior (`wc_whatsapp_phone`).
+- Se añade mensaje inicial configurable y codificación correcta del enlace.
+- Botón de 60 px, enfoque visible de teclado y respeto de áreas seguras móviles.
+- No extrae precios, cantidades ni variaciones de productos.
 
-## Instalación y uso
+## Requisitos
 
-1. El ZIP recibido no incluye la estructura habitual de carpeta del plugin. Prueba su instalación en un entorno aislado; si WordPress no lo instala correctamente, empaqueta el PHP en una carpeta `wc-whatsapp-button/` y vuelve a probar.
-2. Verifica que WooCommerce esté instalado y activo.
-3. Configura el teléfono desde el submenú **WooCommerce → WhatsApp Button**, usando el código de país sin `+` ni espacios.
-4. Prueba productos simples y variables, cantidad, precio y apertura de WhatsApp en escritorio y móvil.
+WordPress 5.8 o posterior y PHP 7.4 o posterior. Sintaxis validada para PHP 7.4 y paquete ZIP verificado. Pendiente prueba funcional en una instalación WordPress real.
 
-## Revisión y pruebas pendientes
+## Ícono
 
-- Confirmar las versiones compatibles de WordPress, PHP y WooCommerce; no se declaran requisitos mínimos.
-- Añadir una validación explícita para cuando WooCommerce no está activo. El código llama a `is_product()` durante `wp_enqueue_scripts` sin comprobar que esa función exista.
-- Validar y normalizar el teléfono en la opción registrada, por ejemplo limitando el valor a dígitos y una longitud razonable.
-- Codificar correctamente el texto del mensaje y cada dato del producto para URL antes de construir el enlace `wa.me`. Los valores se concatenan actualmente en JavaScript.
-- Probar que el script inline asociado a `jquery` se cargue en los temas objetivo y que la ventana no quede bloqueada por el navegador.
-- Revisar selector de variaciones, textos localizados, cambios de precio, disponibilidad y restablecimiento de opciones.
-- Corregir o confirmar la clase HTML duplicada `button button` y probar estilos con los temas WooCommerce soportados.
-- No se encontró una declaración de licencia en el archivo ni en el ZIP; confirmar los derechos de distribución.
-- No se ejecutaron pruebas de instalación, funcionales ni de sintaxis PHP en este entorno. PHP no está disponible aquí.
+Font Awesome Free 6, WhatsApp (Brands), por Fonticons, Inc. SVG bajo CC BY 4.0. Consulta `assets/LICENSE-fontawesome.txt`.

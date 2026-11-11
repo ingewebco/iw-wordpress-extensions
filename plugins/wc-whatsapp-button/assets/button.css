@@ -1,0 +1,43 @@
+/* Posición fija y tamaño constante en escritorio y móviles. */
+a.iw-whatsapp-button {
+    position: fixed;
+    right: 20px;
+    right: max(20px, env(safe-area-inset-right));
+    bottom: 20px;
+    bottom: max(20px, env(safe-area-inset-bottom));
+    z-index: 99999;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-sizing: border-box;
+    width: 60px;
+    height: 60px;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 50%;
+    background: #25d366;
+    color: #fff;
+    text-decoration: none;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, .22);
+}
+a.iw-whatsapp-button:hover {
+    background: #128c7e;
+    color: #fff;
+}
+a.iw-whatsapp-button:focus-visible {
+    outline: 3px solid #075e54;
+    outline-offset: 4px;
+}
+a.iw-whatsapp-button > img {
+    display: block;
+    width: 32px;
+    height: 32px;
+    max-width: none;
+    padding: 0;
+    margin: 0;
+    border: 0;
+    border-radius: 0;
+    box-shadow: none;
+    filter: brightness(0) invert(1);
+}
