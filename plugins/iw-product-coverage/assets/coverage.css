@@ -1,0 +1,7 @@
+.iwpc { width:100%; margin-bottom:1.25rem; }
+.iwpc > label { display:block; margin-bottom:.5rem; font-weight:600; }
+.iwpc-select { width:100%; max-width:100%; padding:.75rem; color:inherit; font:inherit; background:var(--color-white,#fff); border:1px solid #d1d5db; border-radius:var(--border-radius-xs,4px); }
+.iwpc-select:focus-visible { outline:2px solid var(--color-primary,#005ba8); outline-offset:2px; }
+.iwpc-content { margin-top:1rem; }
+.iwpc-content[hidden], .iwpc-controlled[hidden] { display:none !important; }
+.iwpc-message { margin:0; }

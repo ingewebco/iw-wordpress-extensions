@@ -10,7 +10,11 @@ Colección de extensiones de IngeWeb para WordPress. Cada plugin se organiza baj
 | [Indicadores Económicos de Colombia](plugins/indicadores-economicos-colombia) | Muestra TRM, inflación mensual, tasa de intervención y UVR mediante `[indicadores_colombia]`. | 1.0.1 | Requiere revisión y pruebas |
 | [IW WhatsApp Button](plugins/wc-whatsapp-button) | Botón flotante para WordPress y compra por WhatsApp con precio, cantidad y variaciones en WooCommerce opcional. | 1.2.0 | Sintaxis y ZIP verificados; pendiente validación en sitio |
 
+| [IW Product Coverage](plugins/iw-product-coverage) | Cobertura regional por producto WooCommerce, contenido condicional en Divi y región seleccionada en Contact Form 7. | 1.0.0 | Sintaxis y selector verificados; pendiente validación en sitio |
+
 ## Paquetes
+
+- [IW Product Coverage 1.0.0](dist/iw-product-coverage-v1.0.0.zip)
 
 - [IW Search Results 1.4.2](dist/iw-search-results-v1.4.2.zip)
 - [IW Search Results 1.3.0](dist/iw-search-results-v1.3.0.zip)
