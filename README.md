@@ -12,7 +12,11 @@ Colección de extensiones de IngeWeb para WordPress. Cada plugin se organiza baj
 
 | [IW Product Coverage](plugins/iw-product-coverage) | Cobertura regional por producto WooCommerce, contenido condicional en Divi y región seleccionada en Contact Form 7. | 1.0.0 | Sintaxis y selector verificados; pendiente validación en sitio |
 
+| [IW MegaMenu Divi](plugins/iw-megamenu-divi) | Mega menús por columnas o enlaces con Divi Library. Implementado para Maicito. | 1.0.0 | Implementado en Maicito; pendiente verificar apariencia y funcionamiento en Divi estándar |
+
 ## Paquetes
+
+- [IW MegaMenu Divi 1.0.0](dist/iw-megamenu-divi-v1.0.0.zip)
 
 - [IW Product Coverage 1.0.0](dist/iw-product-coverage-v1.0.0.zip)
 

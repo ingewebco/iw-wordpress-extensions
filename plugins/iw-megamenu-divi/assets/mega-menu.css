@@ -1,0 +1,233 @@
+/* Mega menú Líneas de negocio: utiliza la jerarquía del menú de WordPress.
+   Solo escritorio; cada hijo directo es una columna con sus enlaces debajo. */
+@media (min-width: 981px) {
+  /* El panel se posiciona respecto a la cabecera flotante completa. */
+  #mod-header .et_pb_row:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et_pb_column:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et_pb_module:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et_pb_menu_inner_container:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et_pb_menu__wrap:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et_pb_menu__menu:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header .et-menu-nav:has(:is(#menu-main-menu, .et-menu)),
+  #mod-header :is(#menu-main-menu, .et-menu),
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu {
+    position: static !important;
+  }
+
+  #mod-header:has(:is(#menu-main-menu, .et-menu) > .iw-mega-menu:not(.iw-mega-dismissed):hover),
+  #mod-header:has(:is(#menu-main-menu, .et-menu) > .iw-mega-menu.iw-mega-open),
+  #mod-header:has(:is(#menu-main-menu, .et-menu) > .iw-mega-menu:not(.iw-mega-dismissed):focus-within) {
+    background: var(--color-white) !important;
+    border-radius: 18px 18px 0 0 !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu {
+    /* Un panel cerrado no debe capturar hover mediante sus descendientes. */
+    display: none !important;
+    opacity: 0 !important;
+    visibility: hidden !important;
+    pointer-events: none; 
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+    align-content: start;
+    gap: 36px 32px;
+    position: absolute !important;
+    inset: 100% 0 auto !important;
+    width: 100% !important;
+    box-sizing: border-box;
+    height: calc(100vh - 180px);
+    height: calc(100dvh - 180px);
+    max-height: 82vh;
+    overflow: auto !important;
+    overscroll-behavior: contain;
+    padding: clamp(28px, 4vw, 64px) !important;
+    margin: 0 !important;
+    background: var(--color-white) !important;
+    border: 0 !important;
+    border-radius: 0 0 18px 18px !important;
+    box-shadow: 0 18px 24px rgba(0, 0, 0, .14) !important;
+    transform: none !important;
+    z-index: 99999 !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu li.menu-item {
+    float: none !important;
+    width: 100% !important;
+    margin: 0 !important;
+    padding: 0 !important;
+  }
+
+  /* Todos los niveles interiores permanecen visibles dentro de la columna. */
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu .sub-menu {
+    display: block !important;
+    position: static !important;
+    width: 100% !important;
+    padding: 12px 0 0 !important;
+    margin: 0 !important;
+    background: transparent !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: inherit !important;
+    transform: none !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a {
+    display: block !important;
+    width: 100% !important;
+    padding: 12px 0 !important;
+    color: var(--color-body) !important;
+    -webkit-text-fill-color: var(--color-body) !important;
+    background: transparent !important;
+    font-size: 17px;
+    line-height: 1.5;
+    font-weight: 400;
+    white-space: normal;
+    border-radius: 0 !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu > li:not(.iw-mega-content) > a {
+    font-size: 15px;
+    font-weight: 700;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+    border-bottom: 1px solid var(--color-gray-opaque) !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a::after {
+    display: none !important;
+  }
+
+  /* Tarjeta de categoría: el color acompaña al cursor por toda la columna. */
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu > li:not(.iw-mega-content) {
+    box-sizing: border-box;
+    padding: 12px !important;
+    border-radius: 16px !important;
+    transition: background-color .2s ease;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a {
+    box-sizing: border-box;
+    padding: 12px 14px !important;
+    border-radius: 8px !important;
+    transition: background-color .2s ease, color .2s ease;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu > li:not(.iw-mega-content):is(:hover, :focus-within) {
+    background: var(--color-primary) !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu > li:not(.iw-mega-content):is(:hover, :focus-within) a {
+    color: var(--color-white) !important;
+    -webkit-text-fill-color: var(--color-white) !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu > li:not(.iw-mega-content):is(:hover, :focus-within) > a {
+    border-bottom-color: var(--color-secondary) !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a:hover,
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a:focus-visible {
+    color: var(--color-white) !important;
+    -webkit-text-fill-color: var(--color-white) !important;
+    background: var(--color-secondary) !important;
+    text-decoration: none !important;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu .sub-menu li.menu-item > a:focus-visible {
+    outline: 2px solid var(--color-white);
+    outline-offset: -3px;
+  }
+
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu:not(.iw-mega-dismissed):is(:hover, :focus-within, .iw-mega-open) > .sub-menu {
+    display: grid !important;
+    opacity: 1 !important;
+    visibility: visible !important;
+    pointer-events: auto;
+  }
+}
+
+@media (min-width: 981px) and (max-width: 1199px) {
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .sub-menu {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+
+/* Diseño mixto: columna de enlaces y sección de Divi Library. */
+@media (min-width: 981px) {
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-mixed > .iw-mega-panel {
+    grid-template-columns: minmax(0, var(--iw-mega-links-width, 25%)) minmax(0, 1fr);
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel > .iw-mega-content {
+    min-width: 0;
+    padding: 0 !important;
+    background: transparent !important;
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel .iw-mega-link-list {
+    /* Divi aplica .nav li li ul a esta lista aunque no tenga .sub-menu.
+       Debe participar en el flujo de la columna, no abrirse lateralmente. */
+    display: block !important;
+    position: static !important;
+    inset: auto !important;
+    float: none !important;
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: none !important;
+    box-sizing: border-box;
+    height: auto !important;
+    padding: 12px 0 0 !important;
+    margin: 0 !important;
+    list-style: none !important;
+    border: 0 !important;
+    border-radius: 0 !important;
+    background: transparent !important;
+    box-shadow: none !important;
+    opacity: 1 !important;
+    visibility: inherit !important;
+    transform: none !important;
+    pointer-events: inherit;
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel > .iw-mega-links {
+    display: block !important;
+    float: none !important;
+    min-width: 0;
+    width: 100% !important;
+    box-sizing: border-box;
+    padding: 12px !important;
+    height: auto !important;
+    align-self: start;
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel .iw-mega-link-list > li {
+    display: block !important;
+    position: relative !important;
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel .iw-mega-link-list > li > a {
+    /* Divi añade márgenes laterales a los enlaces de este nivel.
+       Con width:100% esos márgenes desbordan el espacio interior. */
+    margin: 0 !important;
+    opacity: 1 !important;
+  }
+  #mod-header :is(#menu-main-menu, .et-menu) > li.iw-mega-menu > .iw-mega-panel > .iw-mega-links:is(:hover, :focus-within) a {
+    color: var(--color-white) !important;
+    -webkit-text-fill-color: var(--color-white) !important;
+  }
+  #mod-header .iw-mega-content > .et-l > .et_builder_inner_content > .et_pb_section {
+    padding: 0;
+    background: transparent;
+  }
+  #mod-header .iw-mega-content .et_pb_row {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+@media (max-width: 980px) {
+  .iw-mega-content { display: none !important; }
+  .iw-mega-title { display: none !important; }
+  .iw-mega-links, .iw-mega-link-list { display: contents !important; }
+}
+@media (prefers-reduced-motion: reduce) {
+  #mod-header .iw-mega-panel, #mod-header .iw-mega-panel li, #mod-header .iw-mega-panel a {
+    transition: none !important;
+  }
+}
